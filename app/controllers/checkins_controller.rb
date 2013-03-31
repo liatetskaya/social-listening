@@ -27,7 +27,7 @@ class CheckinsController < ApplicationController
   end
 
   def index
-    @checkins = checkins.all
+    @checkins = Checkin.all
 
     respond_to do |format|
       format.html # index.html.erb
