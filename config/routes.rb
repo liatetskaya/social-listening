@@ -1,7 +1,23 @@
 SocialListening::Application.routes.draw do
+  
+  resources :checkins
+
+  resource :fsuser
+
+	scope module: 'clients' do
+		resources :foursquare_clients, only: ['new'], path: 'clients/foursquare' do
+		  collection do
+		    get 'callback'
+		  end
+		end
+	end
+
+
+  # root :to => 'fsusers#new'
+
   devise_for :users
 
-  resources :feeds
+  resources :attributes
 
 
   root :to => "page#index"
