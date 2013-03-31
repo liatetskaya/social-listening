@@ -15,9 +15,8 @@ class CheckinsController < ApplicationController
     @checkin.user_last_name = resp['user']['lastName']
     @checkin.user_photo = resp['user']['photo']
     @checkin.venue_id = resp['venue']['id']
-
-    @checkin.stat_checkins_count = resp['stats']['checkinsCount']
-    @checkin.stat_users_count = resp['stats']['usersCount']
+    @checkin.stat_checkins_count = resp['venue']['stats']['checkinsCount']
+    @checkin.stat_users_count = resp['venue']['stats']['usersCount']
     @checkin.message = resp.to_s
     @checkin.save
 
