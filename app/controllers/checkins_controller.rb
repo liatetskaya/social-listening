@@ -61,4 +61,13 @@ class CheckinsController < ApplicationController
     end
   end
 
+def destroy
+    @checkin = Checkin.find(params[:id])
+    @checkin.destroy
+
+    respond_to do |format|
+      format.html { redirect_to checkins_url }
+      format.json { head :no_content }
+    end
+  end
 end
