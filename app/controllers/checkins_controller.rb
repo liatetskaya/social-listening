@@ -36,11 +36,11 @@ class CheckinsController < ApplicationController
   end
   
   def edit
-    @checkin = checkins.find(params[:id])
+    @checkin = Checkin.find(params[:id])
   end
 
   def show
-    @checkin = checkins.find(params[:id])
+    @checkin = Checkin.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
