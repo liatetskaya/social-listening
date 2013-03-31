@@ -15,8 +15,10 @@
     <% @checkins.each do |checkin| %>
       <tr>
         <td><%= link_to checkin.id, checkin_path(checkin) %></td>
-        <td><%= checkin.name %></td>
-        <td><%=l checkin.created_at %></td>
+        <td><%= checkin.user_id %></td>
+        <td><%= checkin.user_first_name %></td>
+        <td><%= checkin.user_last_name %></td>
+        <td><%= checkin.user_gender %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_checkin_path(checkin), :class => 'btn btn-mini' %>
