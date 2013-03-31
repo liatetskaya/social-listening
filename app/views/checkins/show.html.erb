@@ -5,18 +5,18 @@
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @attribute.user_id %></dd>
+  <dd><%= @checkin.user_id %></dd>
   <dt><strong><%= model_class.human_attribute_name(:user_first_name) %>:</strong></dt>
-  <dd><%= @attribute.user_first_name %></dd>
+  <dd><%= @checkin.user_first_name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:user_last_name) %>:</strong></dt>
-  <dd><%= @attribute.user_last_name %></dd>
+  <dd><%= @checkin.user_last_name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:user_gender) %>:</strong></dt>
-  <dd><%= @attribute.user_gender %></dd>
+  <dd><%= @checkin.user_gender %></dd>
 </dl>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              attribute_path, :class => 'btn'  %>
+              checkin_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_checkin_path(@checkin), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

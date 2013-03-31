@@ -47,7 +47,7 @@ class CheckinsController < ApplicationController
       format.json { render json: @checkin }
     end
   end
- def update
+  def update
     @checkin = Checkin.find(params[:id])
 
     respond_to do |format|
