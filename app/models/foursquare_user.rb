@@ -17,7 +17,7 @@ class FoursquareUser < ActiveRecord::Base
         fsuser.access_token = client.access_token
         fsuser.save!
       end
-      user
+      fsuser
     end
   end
 end
