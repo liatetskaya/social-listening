@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fs_id: MyString
+  fs_is_active: false
+  tw_id: MyString
+  tw_is_active: false
+
+two:
+  fs_id: MyString
+  fs_is_active: false
+  tw_id: MyString
+  tw_is_active: false

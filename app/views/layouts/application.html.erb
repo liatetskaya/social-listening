@@ -28,7 +28,7 @@
           <div class="container nav-collapse">
             <ul class="nav">
               <% if user_signed_in? %>
-                <li><%= link_to "Feeds", feeds_path %></li>
+                <li><%= link_to "Setup Credentials", attributes_path %></li>
                 <li><%= link_to "Edit Account", edit_user_registration_path %></li>
                 <li><%= link_to "Logout", destroy_user_session_path, method: "DELETE" %></li>
 
@@ -63,7 +63,7 @@
       </div><!--/content-->
 
       <footer>
-        <p>&copy; Company 2012</p>
+        <p>&copy; SIB 2013</p>
       </footer>
 
     </div> <!-- /container -->
