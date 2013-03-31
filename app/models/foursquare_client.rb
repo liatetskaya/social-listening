@@ -45,7 +45,8 @@ class FoursquareClient
         token_url:     'https://foursquare.com/oauth2/access_token',
         raise_errors:  true,
       }
-      OAuth2::Client.new("xxx", "zzz", options)
+      OAuth2::Client.new(ENV['fs_client_id'], ENV['fs_client_secret'], options)
+
     end
   end
 end
