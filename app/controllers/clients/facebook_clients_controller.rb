@@ -19,11 +19,11 @@ class Clients::FacebookClientsController < ApplicationController
 		#TODO: store the @fb_auth.access_token in the model
 		Rails.logger.info @fb_auth.access_token.inspect
 
-        Profile.new
-        Profile.user = current_user
-        Profile.service = "FACEBOOK"
-        Profile.token = @fb_auth.access_token
-        Profile.save
+        profile = Profile.new
+        profile.user = current_user
+        profile.service = "FACEBOOK"
+        profile.token = @fb_auth.access_token
+        profile.save
 
 		#TODO: move that to another controller
 		#page = FbGraph::Page.new('QuincybuiltSoftwareHq').insights(
