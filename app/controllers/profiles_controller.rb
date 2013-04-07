@@ -18,6 +18,12 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
 
+    if @profile.service_id == 'FACEBOOK'
+        @insights = FbGraph::Page.new('QuincyBuiltSoftware').insights(
+          :access_token => @profile.token
+        )
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @profile }

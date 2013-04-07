@@ -19,7 +19,10 @@
   <b>Status:</b>
   <%= @profile.status %>
 </p>
-
+<p>
+	<b>Page insights:</b>
+	<%= @insights.inspect %>
+</p>
 
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
 <%= link_to 'Back', profiles_path %>
