@@ -1,15 +1,13 @@
 class Clients::FoursquareClientsController < ApplicationController
+	before_filter :authenticate_user!
+
 	def new
 		# https://developer.foursquare.com/overview/auth
 		#Rails.logger.info current_user.inspect
-		if user_signed_in?
-			options = {
-			  redirect_uri: callback_foursquare_clients_url + "?local_token=#{current_user.id}",
-			}
-			redirect_to client.auth_code.authorize_url options
-		else
-			redirect_to :root
-		end
+		options = {
+		  redirect_uri: callback_foursquare_clients_url,
+		}
+		redirect_to client.auth_code.authorize_url options
 	end
 
 	def callback
