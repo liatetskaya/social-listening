@@ -44,14 +44,72 @@
 
     <% @fb_profiles.each do |fb_profile| %>
       <tr>
-        <td><%= profile.token %></td>
-        <td><%= profile.address %></td>
-        <td><%= profile.status %></td>
+        <td><%= fb_profile.token %></td>
+        <td><%= fb_profile.address %></td>
+        <td><%= fb_profile.status %></td>
         <td><%= link_to 'Show', profile %></td>
         <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
+        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     </table>
 <% end %>
 
+<br />
+<% if @fs_profiles.count < 1 %>
+    <%= link_to('Connect to Foursquare', {:controller => 'clients/foursquare_clients', :action => 'new'}) %>
+<% else %>
+<h2>Connected Foursquare veniues</h2>
+    <table>
+      <tr>
+        <th>Service</th>
+        <th>Token</th>
+        <th>Address</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    <% @fs_profiles.each do |fs_profile| %>
+      <tr>
+        <td><%= fs_profile.token %></td>
+        <td><%= fs_profile.address %></td>
+        <td><%= fs_profile.status %></td>
+        <td><%= link_to 'Show', profile %></td>
+        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
+        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </table>
+<% end %>
+
+<br />
+<% if @tw_profiles.count < 1 %>
+    <%= link_to('Connect to Twitter', {:controller => 'clients/twitter_clients', :action => 'new'}) %>
+<% else %>
+<h2>Connected Foursquare veniues</h2>
+    <table>
+      <tr>
+        <th>Service</th>
+        <th>Token</th>
+        <th>Address</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    <% @fs_profiles.each do |tw_profile| %>
+      <tr>
+        <td><%= tw_profile.token %></td>
+        <td><%= tw_profile.address %></td>
+        <td><%= tw_profile.status %></td>
+        <td><%= link_to 'Show', profile %></td>
+        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
+        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </table>
+<% end %>
 <%= link_to 'New Profile', new_profile_path %>

@@ -14,10 +14,15 @@ class Clients::FoursquareClientsController < ApplicationController
 			# TODO: manage error
 		end
 		token = client.auth_code.get_token params[:code], redirect_uri: callback_foursquare_clients_url
-		current_user.foursquare_user = FoursquareUser.find_or_create_by_access_token(token.token)
-		#session[:user_id] = fsuser.id
-		current_user.save
-		redirect_to profile_path
+		Profile.new
+        Profile.user_id = current_user.user_id
+        Profile.service = "FOURSQUARE"
+        Profile.token = token.token
+        Profile.save
+		#current_user.foursquare_user = FoursquareUser.find_or_create_by_access_token(token.token)
+		      #session[:user_id] = fsuser.id
+		#current_user.save
+		#redirect_to profile_path
 	end
 
 	private
