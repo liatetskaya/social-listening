@@ -1,0 +1,6 @@
+class ProfileUser < ActiveRecord::Migration
+  def change
+    add_column :profiles, :user_id, :integer
+    add_column :profiles, :service, :string
+  end
+end

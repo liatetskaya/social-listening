@@ -11,18 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331110552) do
-
-  create_table "attributes", :force => true do |t|
-    t.string   "fs_id"
-    t.boolean  "fs_is_active"
-    t.string   "tw_id"
-    t.boolean  "tw_is_active"
-    t.string   "keyword"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "user_id"
-  end
+ActiveRecord::Schema.define(:version => 20130407171436) do
 
   create_table "checkins", :force => true do |t|
     t.string   "push_id"
@@ -57,17 +46,16 @@ ActiveRecord::Schema.define(:version => 20130331110552) do
 
   add_index "foursquare_users", ["foursquare_id"], :name => "index_foursquare_users_on_foursquare_id"
 
-  create_table "registrations", :force => true do |t|
-    t.string   "fs_id"
-    t.boolean  "fs_is_active"
-    t.string   "tw_id"
-    t.boolean  "tw_is_active"
-    t.string   "keyword"
-    t.string   "longitude"
-    t.string   "latitude"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+  create_table "profiles", :force => true do |t|
+    t.string   "token"
+    t.string   "address"
+    t.boolean  "is_active"
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.string   "service"
+    t.string   "service_id"
   end
 
   create_table "users", :force => true do |t|
@@ -83,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20130331110552) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.integer  "foursquare_user_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

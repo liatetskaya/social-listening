@@ -1,0 +1,57 @@
+<h1>Listing profiles</h1>
+
+<table>
+  <tr>
+    <th>Service</th>
+    <th>Token</th>
+    <th>Address</th>
+    <th>Is active</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @profiles.each do |profile| %>
+  <tr>
+    <td><%= profile.service %></td>
+    <td><%= profile.token %></td>
+    <td><%= profile.address %></td>
+    <td><%= profile.is_active %></td>
+    <td><%= profile.status %></td>
+    <td><%= link_to 'Show', profile %></td>
+    <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
+    <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<% if @fb_profiles.count < 1 %>
+    <%= link_to('Connect to Facebook', {:controller => 'clients/facebook_clients', :action => 'new'}) %>
+<% else %>
+<h2>Connected FB pages</h2>
+    <table>
+      <tr>
+        <th>Service</th>
+        <th>Token</th>
+        <th>Address</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    <% @fb_profiles.each do |fb_profile| %>
+      <tr>
+        <td><%= profile.token %></td>
+        <td><%= profile.address %></td>
+        <td><%= profile.status %></td>
+        <td><%= link_to 'Show', profile %></td>
+        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
+      </tr>
+    <% end %>
+    </table>
+<% end %>
+
+<%= link_to 'New Profile', new_profile_path %>

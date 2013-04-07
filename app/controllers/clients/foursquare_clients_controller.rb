@@ -1,6 +1,5 @@
 class Clients::FoursquareClientsController < ApplicationController
 	before_filter :authenticate_user!
-
 	def new
 		# https://developer.foursquare.com/overview/auth
 		#Rails.logger.info current_user.inspect
@@ -15,9 +14,10 @@ class Clients::FoursquareClientsController < ApplicationController
 			# TODO: manage error
 		end
 		token = client.auth_code.get_token params[:code], redirect_uri: callback_foursquare_clients_url
-		fsuser = FoursquareUser.find_or_create_by_access_token(token.token)
-		session[:user_id] = fsuser.id
-		redirect_to fsuser_path
+		current_user.foursquare_user = FoursquareUser.find_or_create_by_access_token(token.token)
+		#session[:user_id] = fsuser.id
+		current_user.save
+		redirect_to profile_path
 	end
 
 	private

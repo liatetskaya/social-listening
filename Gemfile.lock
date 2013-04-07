@@ -81,6 +81,7 @@ GEM
     multi_json (1.7.2)
     multi_xml (0.5.3)
     multipart-post (1.2.0)
+    mysql2 (0.3.11)
     oauth2 (0.9.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -163,6 +164,7 @@ DEPENDENCIES
   foursquare_rails_generators
   jquery-rails
   less-rails
+  mysql2
   oauth2
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)

@@ -1,5 +1,8 @@
 SocialListening::Application.routes.draw do
   
+  resources :profiles
+
+
   resources :checkins
 
   resource :fsuser
@@ -14,9 +17,11 @@ SocialListening::Application.routes.draw do
       collection do
         get 'callback'
       end
-    end 
-  end
+    end
+	end
 
+
+  # root :to => 'fsusers#new'
   devise_for :users
 
   resources :attributes
@@ -24,6 +29,9 @@ SocialListening::Application.routes.draw do
 
   root :to => "page#index"
   match "/about" => "page#about"
+
+  match "/profile" => "profile#index"
+  match "/stat" => "stat#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

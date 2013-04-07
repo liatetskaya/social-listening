@@ -10,6 +10,10 @@ class FoursquareClient
     @user_info ||= get('users/self').parsed['response']['user']
   end
 
+  def user_venues
+    @user_venues ||= get('venues/managed').parsed['response']['venues']
+  end
+
   def user_id
     user_info['id']
   end
