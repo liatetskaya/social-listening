@@ -11,6 +11,7 @@ end
 
 gem 'foursquare_rails_generators'
 gem 'oauth2'
+gem 'fb_graph'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -44,5 +45,3 @@ gem 'devise'
 
 # To use debugger
 # gem 'debugger'
-
-gem "oauth2"

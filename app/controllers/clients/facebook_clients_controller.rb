@@ -1,4 +1,6 @@
 class Clients::FacebookClientsController < ApplicationController
+	before_filter :authenticate_user!
+
 	def new
 		@fb_auth = fb_auth
 

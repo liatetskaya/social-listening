@@ -4,16 +4,18 @@ SocialListening::Application.routes.draw do
 
   resource :fsuser
 
-	scope module: 'clients' do
-		resources :foursquare_clients, only: ['new'], path: 'clients/foursquare' do
-		  collection do
-		    get 'callback'
-		  end
-		end
-	end
-
-
-  # root :to => 'fsusers#new'
+  scope module: 'clients' do
+    resources :foursquare_clients, only: ['new'], path: 'clients/foursquare' do
+      collection do
+        get 'callback'
+      end
+    end
+    resources :facebook_clients, only: ['new'], path: 'clients/facebook' do
+      collection do
+        get 'callback'
+      end
+    end 
+  end
 
   devise_for :users
 
@@ -21,7 +23,7 @@ SocialListening::Application.routes.draw do
 
 
   root :to => "page#index"
-  get "/about" => "page#about"
+  match "/about" => "page#about"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
