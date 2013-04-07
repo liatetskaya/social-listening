@@ -3,9 +3,9 @@ class ProfilesController < ApplicationController
   # GET /profiles.json
   def index
     @profiles = Profile.all
-    @fb_profiles = Profile.find(:all, :conditions => ["service_id = ? ", "FACEBOOK"])
-    @fs_profiles = Profile.find(:all, :conditions => ["service_id = ? ", "FOURSQUARE"])
-    @tw_profiles = Profile.find(:all, :conditions => ["service_id = ? ", "TWITTER"])
+    @fb_profiles = Profile.find(:all, :conditions => ["service = ? ", "FACEBOOK"])
+    @fs_profiles = Profile.find(:all, :conditions => ["service = ? ", "FOURSQUARE"])
+    @tw_profiles = Profile.find(:all, :conditions => ["service = ? ", "TWITTER"])
     
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
 
-    if @profile.service_id == 'FACEBOOK'
+    if @profile.service == 'FACEBOOK'
         @insights = FbGraph::Page.new('QuincyBuiltSoftware').insights(
           :access_token => @profile.token
         )
