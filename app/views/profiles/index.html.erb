@@ -1,42 +1,13 @@
-<h1>Listing profiles</h1>
+<h1>Connected social profiles</h1>
 
-<table>
-  <tr>
-    <th>Service</th>
-    <th>Token</th>
-    <th>Address</th>
-    <th>Is active</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @profiles.each do |profile| %>
-  <tr>
-    <td><%= profile.service %></td>
-    <td><%= profile.token %></td>
-    <td><%= profile.address %></td>
-    <td><%= profile.is_active %></td>
-    <td><%= profile.status %></td>
-    <td><%= link_to 'Show', profile %></td>
-    <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-    <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
 <% if @fb_profiles.count < 1 %>
     <%= link_to('Connect to Facebook', {:controller => 'clients/facebook_clients', :action => 'new'}) %>
 <% else %>
-<h2>Connected FB pages</h2>
+<h2>Connected Facebook pages</h2>
     <table>
       <tr>
-        <th>Service</th>
-        <th>Token</th>
-        <th>Address</th>
-        <th>Status</th>
+        <th>Page</th>
+        <th>Page ID</th>
         <th></th>
         <th></th>
         <th></th>
@@ -44,9 +15,8 @@
 
     <% @fb_profiles.each do |fb_profile| %>
       <tr>
-        <td><%= fb_profile.token %></td>
-        <td><%= fb_profile.address %></td>
         <td><%= fb_profile.status %></td>
+        <td><%= fb_profile.user_id %></td>
         <td><%= link_to 'Show', fb_profile %></td>
         <td><%= link_to 'Edit', edit_profile_path(fb_profile) %></td>
         <td><%= link_to 'Destroy', fb_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -59,13 +29,11 @@
 <% if @fs_profiles.count < 1 %>
     <%= link_to('Connect to Foursquare', {:controller => 'clients/foursquare_clients', :action => 'new'}) %>
 <% else %>
-<h2>Connected Foursquare veniues</h2>
+<h2>Connected Foursquare venues</h2>
     <table>
       <tr>
-        <th>Service</th>
         <th>Token</th>
         <th>Address</th>
-        <th>Status</th>
         <th></th>
         <th></th>
         <th></th>
@@ -75,7 +43,6 @@
       <tr>
         <td><%= fs_profile.token %></td>
         <td><%= fs_profile.address %></td>
-        <td><%= fs_profile.status %></td>
         <td><%= link_to 'Show', fs_profile %></td>
         <td><%= link_to 'Edit', edit_profile_path(fs_profile) %></td>
         <td><%= link_to 'Destroy', fs_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -83,6 +50,3 @@
     <% end %>
     </table>
 <% end %>
-
-
-
