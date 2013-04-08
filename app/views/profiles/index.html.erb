@@ -49,7 +49,7 @@
         <td><%= fb_profile.status %></td>
         <td><%= link_to 'Show', fb_profile %></td>
         <td><%= link_to 'Edit', edit_profile_path(fb_profile) %></td>
-        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', fb_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     </table>
@@ -76,9 +76,9 @@
         <td><%= fs_profile.token %></td>
         <td><%= fs_profile.address %></td>
         <td><%= fs_profile.status %></td>
-        <td><%= link_to 'Show', profile %></td>
-        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', fs_profile %></td>
+        <td><%= link_to 'Edit', edit_profile_path(fs_profile) %></td>
+        <td><%= link_to 'Destroy', fs_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     </table>
