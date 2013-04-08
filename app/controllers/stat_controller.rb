@@ -10,7 +10,7 @@ class StatController < ApplicationController
 
     page = FbGraph::Page.new('QuincyBuiltSoftware') #FbGraph')
     @insights = page.insights(:access_token => access_token)
-    @likes = @insights[0].Page_fan_adds
+   # @likes = @insights[0].Page_fan_adds
 
   end
 end
