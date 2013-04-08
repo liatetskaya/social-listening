@@ -16,7 +16,7 @@
     <% @fb_profiles.each do |fb_profile| %>
       <tr>
         <td><%= fb_profile.status %></td>
-        <td><%= fb_profile.user_id %></td>
+        <td><%= fb_profile.service_id %></td>
         <td><%= link_to 'Show', fb_profile %></td>
         <td><%= link_to 'Edit', edit_profile_path(fb_profile) %></td>
         <td><%= link_to 'Destroy', fb_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
