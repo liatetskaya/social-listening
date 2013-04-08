@@ -28,7 +28,7 @@ class Clients::FacebookClientsController < ApplicationController
             	profile.service = "FACEBOOK"
             	profile.token = acc.access_token
                 profile.status = acc.name
-                profile.service_id = acc.identifier
+                profile.user_id = acc.identifier
                 profile.save
             end 
         end 
