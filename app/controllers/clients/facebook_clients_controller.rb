@@ -18,9 +18,9 @@ class Clients::FacebookClientsController < ApplicationController
 
 		#TODO: store the @fb_auth.access_token in the model
 		Rails.logger.info @fb_auth.access_token.inspect
- 		@me = FbGraph::User.me(@profile.token)
+ 		@me = FbGraph::User.me(@fb_auth.access_token.to_s)
         @accounts = @me.accounts
-        
+
  		if @accounts.count > 0
             @accounts.each do |acc|
             	profile = Profile.new
