@@ -24,6 +24,13 @@ class ProfilesController < ApplicationController
         )
         @me = FbGraph::User.me(@profile.token)
         @accounts = @me.accounts
+        if @accounts.count > 0
+          @accounts.each do |acc|
+            name = acc.name
+            token = acc.access_token
+            page_id = acc.id
+          end
+        end
     end
 
     respond_to do |format|
