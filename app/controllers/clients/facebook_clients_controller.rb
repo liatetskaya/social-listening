@@ -22,7 +22,7 @@ class Clients::FacebookClientsController < ApplicationController
         profile = Profile.new
         profile.user = current_user
         profile.service = "FACEBOOK"
-        profile.token = @fb_auth.access_token.token
+        profile.token = @fb_auth.access_token.to_s
         profile.save
 
 		#TODO: move that to another controller
