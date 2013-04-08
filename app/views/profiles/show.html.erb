@@ -31,6 +31,7 @@
 	<% if @accounts.count > 0 %>
     <%      @accounts.each do |acc| %>
          <%=  acc.name %>
+         <%=  acc.identifier %>
          <%= acc.access_token %>
          
         <%  end %>
