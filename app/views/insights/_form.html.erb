@@ -1,0 +1,41 @@
+<%= form_for(@insight) do |f| %>
+  <% if @insight.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@insight.errors.count, "error") %> prohibited this insight from being saved:</h2>
+
+      <ul>
+      <% @insight.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Page %><br />
+    <%= f.text_field :Page %>
+  </div>
+  <div class="field">
+    <%= f.label :page_fan_adds %><br />
+    <%= f.number_field :page_fan_adds %>
+  </div>
+  <div class="field">
+    <%= f.label :page_views %><br />
+    <%= f.number_field :page_views %>
+  </div>
+  <div class="field">
+    <%= f.label :page_engaged_users %><br />
+    <%= f.number_field :page_engaged_users %>
+  </div>
+  <div class="field">
+    <%= f.label :page_places_checkins %><br />
+    <%= f.number_field :page_places_checkins %>
+  </div>
+  <div class="field">
+    <%= f.label :page_posts_impressions %><br />
+    <%= f.number_field :page_posts_impressions %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Page:</b>
+  <%= @insight.Page %>
+</p>
+
+<p>
+  <b>Page fan adds:</b>
+  <%= @insight.page_fan_adds %>
+</p>
+
+<p>
+  <b>Page views:</b>
+  <%= @insight.page_views %>
+</p>
+
+<p>
+  <b>Page engaged users:</b>
+  <%= @insight.page_engaged_users %>
+</p>
+
+<p>
+  <b>Page places checkins:</b>
+  <%= @insight.page_places_checkins %>
+</p>
+
+<p>
+  <b>Page posts impressions:</b>
+  <%= @insight.page_posts_impressions %>
+</p>
+
+
+<%= link_to 'Edit', edit_insight_path(@insight) %> |
+<%= link_to 'Back', insights_path %>

@@ -22,6 +22,8 @@ class ProfilesController < ApplicationController
         @insights = FbGraph::Page.new('QuincyBuiltSoftware').insights(
           :access_token => @profile.token
         )
+        @me = FbGraph::User.me(@profile.token)
+        @accounts = @me.accounts
     end
 
     respond_to do |format|

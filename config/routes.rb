@@ -1,5 +1,8 @@
 SocialListening::Application.routes.draw do
   
+  resources :insights
+
+
   resources :profiles
 
 
