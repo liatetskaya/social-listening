@@ -22,8 +22,19 @@
 <p>
 	<b>Page insights:</b>
 	<%= @me.accounts[0].name %>
+</p>
+<p>
 	<b>Page accounts:</b>
 	<%= @me.accounts %>
+</p>
+<p>
+	<% if @accounts.count > 0 %>
+    <%      @accounts.each do |acc| %>
+         <%=  acc.name %>
+         <%= acc.access_token %>
+         
+        <%  end %>
+        <% end %>
 </p>
 
 <%= link_to 'Edit', edit_profile_path(@profile) %> |

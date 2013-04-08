@@ -28,7 +28,7 @@ class ProfilesController < ApplicationController
           @accounts.each do |acc|
             name = acc.name
             token = acc.access_token
-            page_id = acc.id
+           # page_id = acc.id
           end
         end
     end
