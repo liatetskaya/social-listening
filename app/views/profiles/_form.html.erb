@@ -1,36 +1,50 @@
-<%= form_for(@profile) do |f| %>
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
-
-      <ul>
-      <% @profile.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @profile, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :token, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :token, :class => 'text_field' %>
     </div>
-  <% end %>
-  
-  <div class="field">
-    <%= f.label :service %><br />
-    <%= f.text_field :service %>
-  <div class="field">
-    <%= f.label :token %><br />
-    <%= f.text_field :token %>
   </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
+  <div class="control-group">
+    <%= f.label :address, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :address, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :is_active %><br />
-    <%= f.check_box :is_active %>
+  <div class="control-group">
+    <%= f.label :is_active, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :is_active, :class => 'check_box' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
+  <div class="control-group">
+    <%= f.label :status, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :status, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+    <%= f.label :user_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :user_id, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :service, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :service, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :service_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :service_id, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                profiles_path, :class => 'btn' %>
   </div>
 <% end %>

@@ -1,32 +1,33 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Profile -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Token:</b>
-  <%= @profile.token %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:token) %>:</strong></dt>
+  <dd><%= @profile.token %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
+  <dd><%= @profile.address %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:is_active) %>:</strong></dt>
+  <dd><%= @profile.is_active %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+  <dd><%= @profile.status %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dd><%= @profile.user_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:service) %>:</strong></dt>
+  <dd><%= @profile.service %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:service_id) %>:</strong></dt>
+  <dd><%= @profile.service_id %></dd>
+</dl>
 
-<p>
-  <b>Address:</b>
-  <%= @profile.address %>
-</p>
-
-<p>
-  <b>Is active:</b>
-  <%= @profile.is_active %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @profile.status %>
-</p>
-<p>
-	<b>Page insights:</b>
-	<%= @me.accounts[0].name %>
-</p>
-<p>
-	<b>Page accounts:</b>
-	<%= @me.accounts %>
-</p>
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              profiles_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_profile_path(@profile), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              profile_path(@profile),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
