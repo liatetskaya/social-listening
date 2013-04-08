@@ -22,7 +22,7 @@ class Clients::FoursquareClientsController < ApplicationController
 		#current_user.foursquare_user = FoursquareUser.find_or_create_by_access_token(token.token)
 		      #session[:user_id] = fsuser.id
 		#current_user.save
-		#redirect_to profile_path
+		redirect_to profiles_path
 	end
 
 	private

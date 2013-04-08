@@ -31,7 +31,7 @@ class Clients::FacebookClientsController < ApplicationController
 		#)
 		#Rails.logger.info page.inspect
 
-		redirect_to root_path
+		redirect_to profiles_path
 	end
 
 	def fb_auth
