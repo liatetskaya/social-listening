@@ -1,41 +1,44 @@
-<%= form_for(@insight) do |f| %>
-  <% if @insight.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@insight.errors.count, "error") %> prohibited this insight from being saved:</h2>
-
-      <ul>
-      <% @insight.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @insight, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :Page, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :Page, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :page_fan_adds, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :page_fan_adds, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :page_views, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :page_views, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :page_engaged_users, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :page_engaged_users, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :page_places_checkins, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :page_places_checkins, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :page_posts_impressions, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :page_posts_impressions, :class => 'number_field' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :Page %><br />
-    <%= f.text_field :Page %>
-  </div>
-  <div class="field">
-    <%= f.label :page_fan_adds %><br />
-    <%= f.number_field :page_fan_adds %>
-  </div>
-  <div class="field">
-    <%= f.label :page_views %><br />
-    <%= f.number_field :page_views %>
-  </div>
-  <div class="field">
-    <%= f.label :page_engaged_users %><br />
-    <%= f.number_field :page_engaged_users %>
-  </div>
-  <div class="field">
-    <%= f.label :page_places_checkins %><br />
-    <%= f.number_field :page_places_checkins %>
-  </div>
-  <div class="field">
-    <%= f.label :page_posts_impressions %><br />
-    <%= f.number_field :page_posts_impressions %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                insights_path, :class => 'btn' %>
   </div>
 <% end %>

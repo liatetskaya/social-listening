@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407171436) do
+ActiveRecord::Schema.define(:version => 20130408012245) do
 
   create_table "checkins", :force => true do |t|
     t.string   "push_id"
@@ -45,6 +45,17 @@ ActiveRecord::Schema.define(:version => 20130407171436) do
   end
 
   add_index "foursquare_users", ["foursquare_id"], :name => "index_foursquare_users_on_foursquare_id"
+
+  create_table "insights", :force => true do |t|
+    t.string   "Page"
+    t.integer  "page_fan_adds"
+    t.integer  "page_views"
+    t.integer  "page_engaged_users"
+    t.integer  "page_places_checkins"
+    t.integer  "page_posts_impressions"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
 
   create_table "profiles", :force => true do |t|
     t.string   "token"

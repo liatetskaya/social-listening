@@ -1,33 +1,46 @@
-<h1>Listing insights</h1>
-
-<table>
-  <tr>
-    <th>Page</th>
-    <th>Page fan adds</th>
-    <th>Page views</th>
-    <th>Page engaged users</th>
-    <th>Page places checkins</th>
-    <th>Page posts impressions</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @insights.each do |insight| %>
-  <tr>
-    <td><%= insight.Page %></td>
-    <td><%= insight.page_fan_adds %></td>
-    <td><%= insight.page_views %></td>
-    <td><%= insight.page_engaged_users %></td>
-    <td><%= insight.page_places_checkins %></td>
-    <td><%= insight.page_posts_impressions %></td>
-    <td><%= link_to 'Show', insight %></td>
-    <td><%= link_to 'Edit', edit_insight_path(insight) %></td>
-    <td><%= link_to 'Destroy', insight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%- model_class = Insight -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:Page) %></th>
+      <th><%= model_class.human_attribute_name(:page_fan_adds) %></th>
+      <th><%= model_class.human_attribute_name(:page_views) %></th>
+      <th><%= model_class.human_attribute_name(:page_engaged_users) %></th>
+      <th><%= model_class.human_attribute_name(:page_places_checkins) %></th>
+      <th><%= model_class.human_attribute_name(:page_posts_impressions) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @insights.each do |insight| %>
+      <tr>
+        <td><%= link_to insight.id, insight_path(insight) %></td>
+        <td><%= insight.Page %></td>
+        <td><%= insight.page_fan_adds %></td>
+        <td><%= insight.page_views %></td>
+        <td><%= insight.page_engaged_users %></td>
+        <td><%= insight.page_places_checkins %></td>
+        <td><%= insight.page_posts_impressions %></td>
+        <td><%=l insight.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_insight_path(insight), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      insight_path(insight),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Insight', new_insight_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_insight_path,
+            :class => 'btn btn-primary' %>

@@ -1,35 +1,31 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Insight -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Page:</b>
-  <%= @insight.Page %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:Page) %>:</strong></dt>
+  <dd><%= @insight.Page %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:page_fan_adds) %>:</strong></dt>
+  <dd><%= @insight.page_fan_adds %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:page_views) %>:</strong></dt>
+  <dd><%= @insight.page_views %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:page_engaged_users) %>:</strong></dt>
+  <dd><%= @insight.page_engaged_users %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:page_places_checkins) %>:</strong></dt>
+  <dd><%= @insight.page_places_checkins %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:page_posts_impressions) %>:</strong></dt>
+  <dd><%= @insight.page_posts_impressions %></dd>
+</dl>
 
-<p>
-  <b>Page fan adds:</b>
-  <%= @insight.page_fan_adds %>
-</p>
-
-<p>
-  <b>Page views:</b>
-  <%= @insight.page_views %>
-</p>
-
-<p>
-  <b>Page engaged users:</b>
-  <%= @insight.page_engaged_users %>
-</p>
-
-<p>
-  <b>Page places checkins:</b>
-  <%= @insight.page_places_checkins %>
-</p>
-
-<p>
-  <b>Page posts impressions:</b>
-  <%= @insight.page_posts_impressions %>
-</p>
-
-
-<%= link_to 'Edit', edit_insight_path(@insight) %> |
-<%= link_to 'Back', insights_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              insights_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_insight_path(@insight), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              insight_path(@insight),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
