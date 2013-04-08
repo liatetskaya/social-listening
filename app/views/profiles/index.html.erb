@@ -3,37 +3,37 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
 
-if @fb_profiles.count < 1 %>
-   <%= link_to('Connect to Facebook', {:controller => 'clients/facebook_clients', :action => 'new'}) %>
+<% if @fb_profiles.count < 1 %>
+    <%= link_to('Connect to Facebook', {:controller => 'clients/facebook_clients', :action => 'new'}) %>
 <% else %>
-<h2>Connected Facebook pages</h2>
+    <h2>Connected Facebook pages</h2>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:status) %></th>
-      <th><%= model_class.human_attribute_name(:service_id) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @fb_profiles.each do |fb_profile| %>
-     <tr>
-        <td><%= fb_profile.status %></td>
-        <td><%= fb_profile.service_id %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_profile_path(profile), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      profile_path(profile),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:status) %></th>
+          <th><%= model_class.human_attribute_name(:service_id) %></th>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @fb_profiles.each do |fb_profile| %>
+          <tr>
+            <td><%= fb_profile.status %></td>
+            <td><%= fb_profile.service_id %></td>
+            <td>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_profile_path(profile), :class => 'btn btn-mini' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        profile_path(profile),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-mini btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 <% end %>
 
 <% if @fs_profiles.count < 1 %>
@@ -63,9 +63,9 @@ if @fb_profiles.count < 1 %>
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
+        </td>
+    </tr>
+    <% end %>
+    </tbody>
     </table>
 <% end %>
