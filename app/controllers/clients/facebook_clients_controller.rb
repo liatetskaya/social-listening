@@ -6,7 +6,7 @@ class Clients::FacebookClientsController < ApplicationController
 
 		# redirect user to facebook
 		redirect_to @fb_auth.client.authorization_uri(
-		  :scope => [:read_insights, :offline_access]
+		  :scope => [:read_insights, :offline_access, :manage_pages]
 		)
 	end
 
