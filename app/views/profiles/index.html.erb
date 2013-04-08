@@ -2,6 +2,7 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
+
 if @fb_profiles.count < 1 %>
    <%= link_to('Connect to Facebook', {:controller => 'clients/facebook_clients', :action => 'new'}) %>
 <% else %>
@@ -33,21 +34,23 @@ if @fb_profiles.count < 1 %>
     <% end %>
   </tbody>
 </table>
+<% end %>
 
-if @fs_profiles.count < 1 %>
+<% if @fs_profiles.count < 1 %>
    <%= link_to('Connect to Foursquare', {:controller => 'clients/foursquare_clients', :action => 'new'}) %>
 <% else %>
-<h2>Connected Foursquare Venues</h2>
+    <h2>Connected Foursquare Venues</h2>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:status) %></th>
-      <th><%= model_class.human_attribute_name(:service_id) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:status) %></th>
+          <th><%= model_class.human_attribute_name(:service_id) %></th>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        </tr>
+      </thead>
+      <tbody>
+
     <% @fs_profiles.each do |fs_profile| %>
      <tr>
         <td><%= fs_profile.status %></td>
@@ -60,8 +63,9 @@ if @fs_profiles.count < 1 %>
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+<% end %>
