@@ -27,16 +27,6 @@
 	<b>Page accounts:</b>
 	<%= @me.accounts %>
 </p>
-<p>
-	<% if @accounts.count > 0 %>
-    <%      @accounts.each do |acc| %>
-         <%=  acc.name %>
-         <%=  acc.identifier %>
-         <%= acc.access_token %>
-         
-        <%  end %>
-        <% end %>
-</p>
 
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
 <%= link_to 'Back', profiles_path %>
