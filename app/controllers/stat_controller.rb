@@ -8,8 +8,8 @@ class StatController < ApplicationController
 #    auth.exchange_token! access_token
 #    token = auth.acess_token
 
-    page = FbGraph::Page.new('QuincyBuiltSoftware') #FbGraph')
-    @insights = page.insights(:access_token => access_token)
+    page = FbGraph::Page.new('TeamSwipely') #FbGraph')
+   # @insights = page.insights(:access_token => access_token)
    # @likes = @insights[0].Page_fan_adds
 
   end
