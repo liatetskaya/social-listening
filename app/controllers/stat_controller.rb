@@ -9,7 +9,9 @@ class StatController < ApplicationController
 #    token = auth.acess_token
 
     page = FbGraph::Page.new('TeamSwipely') #FbGraph')
-   # @insights = page.insights(:access_token => access_token)
+    @insights = page.insights(:access_token => access_token)
+    @likes = page.insights(:access_token => access_token, :metrics => 'page_like_adds', :period => 'day')
+   
    # @likes = @insights[0].Page_fan_adds
 
   end
