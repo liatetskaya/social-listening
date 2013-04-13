@@ -15,6 +15,7 @@ end
 gem 'foursquare_rails_generators'
 gem 'oauth2'
 gem 'fb_graph'
+gem 'twitter_oauth'
 
 # Gems used only for assets and not required
 # in production environments by default.
