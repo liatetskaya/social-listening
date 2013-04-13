@@ -21,6 +21,11 @@ SocialListening::Application.routes.draw do
         get 'callback'
       end
     end
+    resources :twitter_clients, only: ['new'], path: 'clients/twitter' do
+      collection do
+        get 'callback'
+      end
+    end
 	end
 
 
