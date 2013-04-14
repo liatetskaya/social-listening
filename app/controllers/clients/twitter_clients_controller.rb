@@ -15,11 +15,10 @@ class Clients::TwitterClientsController < ApplicationController
 		)
 		
 		if tw_auth.authorized?
-			# TODO: Save it in the database
 			profile = Profile.new
 			profile.user = current_user
 			profile.service = "TWITTER"
-			profile.token = access_token.to_s
+			profile.token = { 'token' => access_token.token, 'secret' => access_token.secret }.to_json
 			profile.save
 		end
 		
