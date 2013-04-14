@@ -1,56 +1,42 @@
 class Clients::TwitterClientsController < ApplicationController
 	before_filter :authenticate_user!
-
+	
 	def new
-		# TODO: riderect to twitter for auth
-#		@fb_auth = fb_auth
-#
-#		# redirect user to facebook
-#		redirect_to @fb_auth.client.authorization_uri(
-#		  :scope => [:read_insights, :offline_access, :manage_pages]
-#		)
+		session[:tw_request_token] = tw_auth.request_token(:oauth_callback => callback_twitter_clients_url)
+		redirect_to session[:tw_request_token].authorize_url
 	end
-
+	
 	def callback
-#		@fb_auth = fb_auth
-#		@fb_auth.client.authorization_code = params[:code]
-#		access_token = @fb_auth.client.access_token! :client_auth_body
-#		@fb_auth.exchange_token! access_token
-
-#		Rails.logger.info @fb_auth.access_token.inspect
-# 		@me = FbGraph::User.me(@fb_auth.access_token.to_s)
-#        @accounts = @me.accounts
-
-# 		if @accounts.count > 0
-#            @accounts.each do |acc|
-#            	profile = Profile.new
-#            	profile.user = current_user
-#            	profile.service = "FACEBOOK"
-#            	profile.token = acc.access_token
-#                profile.status = acc.name
-#                profile.user_id = acc.identifier
-#                profile.save
-#            end 
-#        end 
-
-        #profile = Profile.new
-        #profile.user = current_user
-        #profile.service = "FACEBOOK"
-        #profile.token = @fb_auth.access_token.to_s
-        #profile.save
-
-		#TODO: move that to another controller
-		#page = FbGraph::Page.new('QuincybuiltSoftwareHq').insights(
-		#	:access_token => @fb_auth.access_token
-		#)
-		#Rails.logger.info page.inspect
-
+		request_token = session[:tw_request_token]
+		access_token = tw_auth.authorize(
+ 			request_token.token,
+ 			request_token.secret,
+ 			:oauth_verifier => params[:oauth_verifier]
+		)
+		
+		if tw_auth.authorized?
+			# TODO: Save it in the database
+			#profile = Profile.new
+			#profile.user = current_user
+			#profile.service = "TWITTER"
+			#profile.token = access_token.to_s
+			#profile.save
+		end
+		
+		# Clear the session attributes
+		session[:tw_auth] = nil
+		session[:tw_request_token] = nil
+		
 		redirect_to profiles_path
 	end
-
-#	def fb_auth
-#		fb_auth = FbGraph::Auth.new(ENV['fb_client_id'], ENV['fb_client_secret'])
-#		fb_auth.client.redirect_uri = callback_facebook_clients_url
-#		fb_auth
-#	end
+	
+	def tw_auth
+		if session[:tw_auth] == nil
+			session[:tw_auth] = TwitterOAuth::Client.new(
+				:consumer_key => ENV['tw_client_id'],
+				:consumer_secret => ENV['tw_client_secret']
+			)
+		end
+		session[:tw_auth]
+	end
 end

@@ -2,7 +2,6 @@ class Clients::FoursquareClientsController < ApplicationController
 	before_filter :authenticate_user!
 	def new
 		# https://developer.foursquare.com/overview/auth
-		#Rails.logger.info current_user.inspect
 		options = {
 		  redirect_uri: callback_foursquare_clients_url,
 		}
@@ -15,18 +14,20 @@ class Clients::FoursquareClientsController < ApplicationController
 		end
 		token = client.auth_code.get_token params[:code], redirect_uri: callback_foursquare_clients_url
 		profile = Profile.new
-        profile.user = current_user
-        profile.service = "FOURSQUARE"
-        profile.token = token.token
-        profile.save
-		#current_user.foursquare_user = FoursquareUser.find_or_create_by_access_token(token.token)
-		      #session[:user_id] = fsuser.id
-		#current_user.save
+        	profile.user = current_user
+        	profile.service = "FOURSQUARE"
+        	profile.token = token.token
+        	profile.save
+		
+		session[:fs_auth] = nil
 		redirect_to profiles_path
 	end
 
 	private
 	def client
-	  FoursquareClient.oauth2_client
+		if session[:fs_auth] == nil
+			session[:fs_auth]= FoursquareClient.oauth2_client
+		end
+		session[:fs_auth]
 	end
 end
