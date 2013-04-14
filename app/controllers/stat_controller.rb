@@ -13,6 +13,5 @@ class StatController < ApplicationController
     @likes = page.insights(:access_token => access_token, :metrics => 'page_like_adds')
    
    # @likes = @insights[0].Page_fan_adds
-
   end
 end
