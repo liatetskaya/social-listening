@@ -13,7 +13,7 @@ class Tweet
 
         if tw_client.authorized?
           search = tw_client.search('#', {:geocode => '42.353121,-71.052882,0.1km'})
-          Rails.logger.info search['results'].inspect
+          #Rails.logger.info search['results'].inspect
         end
       end
     end
