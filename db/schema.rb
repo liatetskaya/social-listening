@@ -14,20 +14,19 @@
 ActiveRecord::Schema.define(:version => 20130408012245) do
 
   create_table "checkins", :force => true do |t|
-    t.string   "push_id"
-    t.integer  "created_at",          :null => false
-    t.string   "user_gender"
-    t.string   "user_id"
-    t.string   "user_first_name"
-    t.string   "user_last_name"
-    t.string   "user_photo"
-    t.string   "venue_id"
-    t.integer  "stat_checkins_count"
-    t.string   "stat_users_count"
+    t.string   "rm_service_id"
+    t.string   "rm_merchant_id"
+    t.string   "rm_user_id"
+    t.string   "rm_created_at"
+    t.string   "rm_message_id"
+    t.string   "rm_message_url"
+    t.text     "user"
+    t.text     "post"
     t.text     "message"
     t.string   "notes"
-    t.integer  "user_profile"
-    t.datetime "updated_at",          :null => false
+    t.string   "client_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "feeds", :force => true do |t|
