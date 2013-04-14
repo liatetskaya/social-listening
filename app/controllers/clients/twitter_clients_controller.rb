@@ -16,11 +16,11 @@ class Clients::TwitterClientsController < ApplicationController
 		
 		if tw_auth.authorized?
 			# TODO: Save it in the database
-			#profile = Profile.new
-			#profile.user = current_user
-			#profile.service = "TWITTER"
-			#profile.token = access_token.to_s
-			#profile.save
+			profile = Profile.new
+			profile.user = current_user
+			profile.service = "TWITTER"
+			profile.token = access_token.to_s
+			profile.save
 		end
 		
 		# Clear the session attributes
