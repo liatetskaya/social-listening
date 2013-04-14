@@ -12,18 +12,27 @@ class Clients::FacebookClientsController < ApplicationController
 		fb_auth.client.authorization_code = params[:code]
 		access_token = fb_auth.client.access_token! :client_auth_body
 		fb_auth.exchange_token! access_token
-
+		
+		Rails.logger.info fb_auth.access_token.inspect
+		
  		me = FbGraph::User.me(fb_auth.access_token.to_s)
         	accounts = me.accounts
 
  		if accounts.count > 0
             		accounts.each do |acc|
+                                # TODO: verify that the user has admin right for the page
+                                page = FbGraph::Page.new(acc.identifier).fetch(
+                                  :access_token => acc.access_token.to_s,
+                                  :fields => :access_token
+                                )
+                                page.tab!(:app_id => '134358360084677') # TODO: un-hardcode the app id
+
             			profile = Profile.new
             			profile.user = current_user
             			profile.service = "FACEBOOK"
             			profile.token = acc.access_token
                 		profile.status = acc.name
-                		profile.user_id = acc.identifier
+                		profile.user_id = acc.identifier # THIS IS WRONG!!! That is page's id
                 		profile.save
             		end
         	end
