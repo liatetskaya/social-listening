@@ -1,7 +1,5 @@
 class Checkin < ActiveRecord::Base
-  attr_accessible :created_at, 
-    :rm_service_id, 
-    :rm_merchant_id, 
+  attr_accessible :created_at, :rm_service_id, :rm_merchant_id, 
     :rm_user_id, 
     :rm_created_at, 
     :rm_message_id,

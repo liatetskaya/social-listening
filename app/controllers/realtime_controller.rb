@@ -19,7 +19,7 @@ class RealtimeController < ApplicationController
           @checkin.post_text= resp['user']['text']
  #         @checkin.post_url= resp['user']['name']
  #         @checkin.picture= resp['user']['']
-          @checkin.coordinates= resp['user']['coordinates']
+   #       @checkin.coordinates= resp['user']['coordinates']
   #        @checkin.place_id= resp['user']['name']
           @checkin.message= resp.to_s
           @checkin.save

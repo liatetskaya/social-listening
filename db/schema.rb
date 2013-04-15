@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130408012245) do
+ActiveRecord::Schema.define(:version => 20130415023107) do
 
   create_table "checkins", :force => true do |t|
     t.string   "rm_service_id"
