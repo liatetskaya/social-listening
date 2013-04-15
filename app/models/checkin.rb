@@ -4,7 +4,7 @@ class Checkin < ActiveRecord::Base
     :rm_merchant_id, 
     :rm_user_id, 
     :rm_created_at, 
-    :rm_message_id
+    :rm_message_id,
     :rm_message_url,
     :user_first_name,
     :user_last_name,
