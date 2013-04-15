@@ -14,7 +14,7 @@ class Tweet
         if tw_client.authorized?
           resp = tw_client.search('#', {:geocode => '42.353121,-71.052882,0.1km'})
           if resp.results.count > 0
-            resp.['results'].each do |res|
+            resp['results'].each do |res|
               @checkin = Checkin.new
 
               @checkin.rm_service_id = "Twitter"
