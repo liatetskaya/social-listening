@@ -1,4 +1,6 @@
 class RealtimeController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+
   def foursquare
     resp = JSON.parse(params['checkin'])
     # TODO: verify push secret
