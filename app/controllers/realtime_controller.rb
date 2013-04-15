@@ -28,8 +28,9 @@ class RealtimeController < ApplicationController
   end
 
   def facebook
-    resp = JSON.parse(request.body)
+    resp = JSON.parse(request.body.read)
     Rails.logger.info resp.inspect
+    return head :ok
   end
 
   def facebookVerify
