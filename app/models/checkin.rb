@@ -15,7 +15,7 @@ class Checkin < ActiveRecord::Base
     :post_url, 
     :picture, 
     :location, 
-    :place_id 
+    :place_id, 
     :notes, 
     :message, 
     :client_id 
