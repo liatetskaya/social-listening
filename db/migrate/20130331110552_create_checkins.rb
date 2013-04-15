@@ -7,10 +7,18 @@ class CreateCheckins < ActiveRecord::Migration
       t.string :rm_created_at
       t.string :rm_message_id
       t.string :rm_message_url
-      t.text :user
-      t.text :post
+      t.string :user_first_name
+      t.string :user_last_name
+      t.string :user_screen_name
+      t.string :user_photo
+      t.string :user_info
+      t.string :post_text
+      t.string :post_url
+      t.string :picture
+      t.string :location
+      t.string :place_id
+      t.text :notes
       t.text :message
-      t.string :notes
       t.string :client_id
 
     
