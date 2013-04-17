@@ -1,9 +1,16 @@
 SocialListening::Application.routes.draw do
   
+  resources :insights
+
+  resources :profiles
+
   resources :checkins
 
-  resource :fsuser
+<<<<<<< HEAD
+=======
+#  resource :fsuser
 
+>>>>>>> YL1
   scope module: 'clients' do
     resources :foursquare_clients, only: ['new'], path: 'clients/foursquare' do
       collection do
@@ -14,9 +21,22 @@ SocialListening::Application.routes.draw do
       collection do
         get 'callback'
       end
+<<<<<<< HEAD
     end 
   end
 
+=======
+    end
+    resources :twitter_clients, only: ['new'], path: 'clients/twitter' do
+      collection do
+        get 'callback'
+      end
+    end
+  end
+
+
+  # root :to => 'fsusers#new'
+>>>>>>> YL1
   devise_for :users
 
   resources :attributes
@@ -24,6 +44,18 @@ SocialListening::Application.routes.draw do
 
   root :to => "page#index"
   match "/about" => "page#about"
+<<<<<<< HEAD
+=======
+
+  match "/profile" => "profile#index"
+  match "/stat" => "stat#index"
+
+  post '/realtime/foursquare' => 'realtime#foursquare'
+
+  post '/realtime/facebook' => 'realtime#facebook'
+  get '/realtime/facebook' => 'realtime#facebookVerify'
+
+>>>>>>> YL1
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

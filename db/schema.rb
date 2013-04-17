@@ -11,34 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331110552) do
-
-  create_table "attributes", :force => true do |t|
-    t.string   "fs_id"
-    t.boolean  "fs_is_active"
-    t.string   "tw_id"
-    t.boolean  "tw_is_active"
-    t.string   "keyword"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "user_id"
-  end
+ActiveRecord::Schema.define(:version => 20130415023107) do
 
   create_table "checkins", :force => true do |t|
-    t.string   "push_id"
-    t.integer  "created_at",          :null => false
-    t.string   "user_gender"
-    t.string   "user_id"
+    t.string   "rm_service_id"
+    t.string   "rm_merchant_id"
+    t.string   "rm_user_id"
+    t.string   "rm_created_at"
+    t.string   "rm_message_id"
+    t.string   "rm_message_url"
     t.string   "user_first_name"
     t.string   "user_last_name"
+    t.string   "user_screen_name"
     t.string   "user_photo"
-    t.string   "venue_id"
-    t.integer  "stat_checkins_count"
-    t.string   "stat_users_count"
+    t.string   "user_info"
+    t.string   "post_text"
+    t.string   "post_url"
+    t.string   "picture"
+    t.string   "location"
+    t.string   "place_id"
+    t.text     "notes"
     t.text     "message"
-    t.string   "notes"
-    t.integer  "user_profile"
-    t.datetime "updated_at",          :null => false
+    t.string   "client_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "feeds", :force => true do |t|
@@ -57,17 +53,27 @@ ActiveRecord::Schema.define(:version => 20130331110552) do
 
   add_index "foursquare_users", ["foursquare_id"], :name => "index_foursquare_users_on_foursquare_id"
 
-  create_table "registrations", :force => true do |t|
-    t.string   "fs_id"
-    t.boolean  "fs_is_active"
-    t.string   "tw_id"
-    t.boolean  "tw_is_active"
-    t.string   "keyword"
-    t.string   "longitude"
-    t.string   "latitude"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+  create_table "insights", :force => true do |t|
+    t.string   "Page"
+    t.integer  "page_fan_adds"
+    t.integer  "page_views"
+    t.integer  "page_engaged_users"
+    t.integer  "page_places_checkins"
+    t.integer  "page_posts_impressions"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.string   "token"
+    t.string   "address"
+    t.boolean  "is_active"
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.string   "service"
+    t.string   "service_id"
   end
 
   create_table "users", :force => true do |t|
@@ -83,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20130331110552) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.integer  "foursquare_user_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

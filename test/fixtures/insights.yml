@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Page: MyString
+  page_fan_adds: 1
+  page_views: 1
+  page_engaged_users: 1
+  page_places_checkins: 1
+  page_posts_impressions: 1
+
+two:
+  Page: MyString
+  page_fan_adds: 1
+  page_views: 1
+  page_engaged_users: 1
+  page_places_checkins: 1
+  page_posts_impressions: 1

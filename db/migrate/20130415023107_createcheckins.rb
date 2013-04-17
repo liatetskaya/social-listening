@@ -1,5 +1,5 @@
-class CreateCheckins < ActiveRecord::Migration
-  def change
+class Createcheckins < ActiveRecord::Migration
+   def change
     create_table :checkins do |t|
       t.string :rm_service_id
       t.string :rm_merchant_id
@@ -20,10 +20,8 @@ class CreateCheckins < ActiveRecord::Migration
       t.text :notes
       t.text :message
       t.string :client_id
-
-    
-
       t.timestamps
     end
   end
+ 
 end

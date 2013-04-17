@@ -1,4 +1,6 @@
 class FoursquareUser < ActiveRecord::Base
+  has_many :users
+  
   def name
     client.user_name
   end
