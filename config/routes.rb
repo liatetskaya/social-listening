@@ -8,7 +8,6 @@ SocialListening::Application.routes.draw do
 
 #  resource :fsuser
 
-
   scope module: 'clients' do
     resources :foursquare_clients, only: ['new'], path: 'clients/foursquare' do
       collection do
@@ -19,11 +18,6 @@ SocialListening::Application.routes.draw do
       collection do
         get 'callback'
       end
-
-    end 
-  end
-
-
     end
     resources :twitter_clients, only: ['new'], path: 'clients/twitter' do
       collection do
@@ -34,7 +28,6 @@ SocialListening::Application.routes.draw do
 
 
   # root :to => 'fsusers#new'
-
   devise_for :users
 
   resources :attributes
@@ -43,7 +36,6 @@ SocialListening::Application.routes.draw do
   root :to => "page#index"
   match "/about" => "page#about"
 
-
   match "/profile" => "profile#index"
   match "/stat" => "stat#index"
 
@@ -51,7 +43,6 @@ SocialListening::Application.routes.draw do
 
   post '/realtime/facebook' => 'realtime#facebook'
   get '/realtime/facebook' => 'realtime#facebookVerify'
-
 
 
   # The priority is based upon order of creation:
