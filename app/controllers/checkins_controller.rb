@@ -46,8 +46,4 @@ def destroy
       format.json { head :no_content }
     end
   end
-<<<<<<< HEAD
 end
-=======
-end
->>>>>>> YL1
