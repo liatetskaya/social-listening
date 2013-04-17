@@ -15,14 +15,11 @@ end
 gem 'foursquare_rails_generators'
 gem 'oauth2'
 gem 'fb_graph'
-<<<<<<< HEAD
-=======
 gem 'twitter_oauth'
 gem 'tweetstream'
 
 gem 'daemons-rails'
 gem 'whenever', :require => false
->>>>>>> YL1
 
 # Gems used only for assets and not required
 # in production environments by default.
