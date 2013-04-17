@@ -1,3 +1,35 @@
 // Place all the styles related to the Page controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.content{
+	margin: 60px 0 0 0;
+}
+
+.sidebar-nav{
+	display: none;
+}
+
+.productDemo{
+	width: 100%;
+	background-color: black;
+	height: 300px;
+}
+
+.navbar-inner{
+	background: white;
+	border: none;
+	box-shadow: 0 0px 0px rgba(0,0,0,.1) !important;
+	-moz-box-shadow: 0 none;
+	text-align: right;
+	-webkit-box-shadow: 0 0px 0px rgba(0,0,0,.1) !important;
+	font-weight: bold;
+
+}
+
+
+.navbar .nav{
+	float: right;
+	padding-top: 10px;
+}
+
