@@ -2,6 +2,21 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
+
+
+<% @checkins.each do |checkin| %>
+    <div class="checkIn">
+        <div class="profilePic">
+          <img src="" />
+        </div><div class="profileContent">
+          <ul>
+            <li><em>Name: </em><%= checkin.user_first_name %> <%= checkin.user_last_name %></li>
+          </ul>
+        </div>
+      </div>
+<% end %>
+
+
 <table class="table table-striped">
   <thead>
     <tr>

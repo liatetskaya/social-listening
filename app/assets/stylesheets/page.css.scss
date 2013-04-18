@@ -6,16 +6,27 @@ body{
 	background-image: url("/assets/background.png"); 
 }
 
+.navbar-fixed-top{
+	top: 20px;
+	padding-top: 0px;
+	
+}
+
 
 h1{
-	font-family: helvetica;
-	color:#EAEAEA;
+	font-family: helvetica, san-serif;
+	color:black;
 	display: inline;
 	vertical-align: middle;
-	padding-left: 10px;
+	padding-left: 20px;
 	font-size: 37px;
 	text-shadow: 0 1px 0 black;
+	font-weight: normal;
 
+}
+
+.page-header{
+	margin: 20px 0 10px;
 }
 
 h2{
@@ -41,7 +52,7 @@ h2{
 }
 
 .content{
-	margin: 60px 0 0 0;
+	margin: 10px 0 0 0;
 }
 
 .sidebar-nav{
@@ -55,6 +66,10 @@ h2{
 	height: 300px;
 }
 
+.navbar-fixed-top{
+	position: absolute;
+}
+
 .navbar-inner{
 	background: none;
 	border: none;
@@ -66,15 +81,73 @@ h2{
 
 }
 
+.nav{
+	background-color: #999;
+	border-radius: 5px;
+}
 
 .navbar .nav{
 	float: right;
-	padding-top: 10px;
-	color: black;
+	
 }
 
 .navbar .nav > li > a{
-	color: black;
+	color: #333;
 	text-shadow: none;
 }
 
+
+.logo{
+	margin-top: 24px;
+	margin-left: 8%;
+	margin-bottom: 17px;
+}
+
+.checkIn{
+  border-radius: 8px;
+  border: 1px solid black;
+  height: 102px;
+  margin-left: 40px;
+  margin-bottom: 15px;
+  background-color: #F2F2F2;
+  width: 90%;
+}
+
+.checkIn .profilePic{
+  background-color: #999;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.checkIn .profileContent{
+  
+  height: 93px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 0 0 10px;
+  
+}
+
+.profileContent ul li{
+  padding-bottom: 10px;
+  font-size: .9em;
+  list-style: none;
+}
+
+.profileContent ul em{
+  font-weight: bold;
+}
+
+.profileContent ul li.repeat{
+  color: green;
+  font-weight: bold;
+  font-size: .7em;
+}
+
+.mainContent{
+	background-image: url("/assets/content.png");
+	border-radius: 5px;
+}
