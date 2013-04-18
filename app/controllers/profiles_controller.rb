@@ -6,7 +6,8 @@ class ProfilesController < ApplicationController
     @fb_profiles = Profile.find(:all, :conditions => ["service = ? ", "FACEBOOK"])
     @fs_profiles = Profile.find(:all, :conditions => ["service = ? ", "FOURSQUARE"])
     @tw_profiles = Profile.find(:all, :conditions => ["service = ? ", "TWITTER"])
-    
+    @tw_master = Profile.find(:all, :conditions => ["service_id = ? ", "MASTER"]) 
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @profiles }

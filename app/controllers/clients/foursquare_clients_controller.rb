@@ -1,9 +1,6 @@
 class Clients::FoursquareClientsController < ApplicationController
 	before_filter :authenticate_user!
-<<<<<<< HEAD
 
-=======
->>>>>>> YL1
 	def new
 		# https://developer.foursquare.com/overview/auth
 		#Rails.logger.info current_user.inspect

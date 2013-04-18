@@ -69,3 +69,40 @@
     </tbody>
     </table>
 <% end %>
+<% if @tw_profiles.count < 1 %>
+   <%= link_to('Connect to Twitter', {:controller => 'profiles', :action => 'new'}) %>
+<% else %>
+    <h2>Connected Twitter feeds</h2>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:status) %></th>
+          <th><%= model_class.human_attribute_name(:service_id) %></th>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        </tr>
+      </thead>
+      <tbody>
+
+    <% @tw_profiles.each do |tw_profile| %>
+     <tr>
+        <td><%= tw_profile.status %></td>
+        <td><%= tw_profile.service_id %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_profile_path(tw_profile), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      profile_path(tw_profile),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+
+        </td>
+     
+    </tr>
+    <% end %>
+    </tbody>
+    </table>
+    <%= link_to('Connect to Twitter feed', {:controller => 'profiles', :action => 'new'}) %>
+   
+<% end %>
