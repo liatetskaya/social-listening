@@ -8,9 +8,9 @@ gem 'rails', '3.2.12'
 group :developmnet do
   gem 'sqlite3'
 end
-group :production do
-  gem 'mysql2'
-end
+#group :production do
+#  gem 'mysql2'
+#end
 
 gem 'foursquare_rails_generators'
 gem 'oauth2'
