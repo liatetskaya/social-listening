@@ -15,6 +15,7 @@ end
 gem 'foursquare_rails_generators'
 gem 'oauth2'
 gem 'fb_graph'
+gem 'twitter'
 gem 'twitter_oauth'
 gem 'tweetstream'
 gem 'instagram'

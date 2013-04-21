@@ -1,20 +1,20 @@
-class Tweet
+class Instagram
   class << self
     def search
-      tw_profiles = Profile.find(:all, :conditions => ["service = ? ", "TWITTER"])
-      tw_profiles.each do |profile|
-        next if profile.location.blank? && profile.keywords.blank?
-        token = ENV['tw_access_token']
-        secret = ENV['tw_access_secret']
+      ins_profiles = Profile.find(:all, :conditions => ["service = ? ", "INSTAGRAM"])
+      ins_profiles.each do |profile|
+	    next if profile.location.blank? && profile.keywords.blank?
+        token = ENV['ins_access_token']
+        secret = ENV['ins_access_secret']
         if profile.token.present?
-          tw_access_token = JSON.parse(profile.token)
-          token = tw_access_token['token']
-          secret = tw_access_token['secret']
+          ins_access_token = JSON.parse(profile.token)
+          token = ins_access_token['token']
+          secret = ins_access_token['secret']
         end
         next if token.blank?
-        tw_client = Twitter::Client.new(
-          :consumer_key => ENV['tw_client_id'],
-          :consumer_secret => ENV['tw_client_secret'],
+        tw_client = Instagram::Client.new(
+          :consumer_key => ENV['ins_client_id'],
+          :consumer_secret => ENV['ins_client_secret'],
           :oauth_token => token,
           :oauth_token_secret => secret
         )
@@ -30,12 +30,21 @@ class Tweet
           if profile.location.present?
             options[:geocode] = profile.location
           end
-          results = tw_client.search("#{query} -rt", options)[:results]
+          results = tw_client.search(query, options)[:results]
           if results.present?
             results.each do |res|
+	      #Rails.logger.info res[:id].inspect
+              #Rails.logger.info res[:user][:id].inspect
+              #Rails.logger.info res[:user][:name].inspect
+              #Rails.logger.info res[:user][:screen_name].inspect
+              #Rails.logger.info res[:geo].inspect
+              #Rails.logger.info res[:profile_image_url].inspect
+              #Rails.logger.info res[:location].inspect
+              #Rails.logger.info res[:text].inspect
+
               @checkin = Checkin.new
-              
-              @checkin.rm_service_id = 'TWITTER'
+
+              @checkin.rm_service_id = 'INSTAGRAM'
               @checkin.rm_message_id = res[:id]
               if res[:user] != nil
                 user = res[:user]
@@ -55,12 +64,14 @@ class Tweet
               end
             end
           end
-          profile.last_message_timestamp = @checkin.rm_message_id
-          profile.save
         rescue
           Rails.logger.error "Error #{$!}"
         end
       end
+    end
+    def update
+      # long lat radius
+      
     end
   end
 end

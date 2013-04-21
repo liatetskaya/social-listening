@@ -19,6 +19,11 @@ SocialListening::Application.routes.draw do
         get 'callback'
       end
     end
+    resources :instagram_clients, only: ['new'], path: 'clients/instagram' do
+      collection do
+        get 'callback'
+      end
+    end
     resources :twitter_clients, only: ['new'], path: 'clients/twitter' do
       collection do
         get 'callback'
@@ -40,6 +45,9 @@ SocialListening::Application.routes.draw do
   match "/stat" => "stat#index"
 
   post '/realtime/foursquare' => 'realtime#foursquare'
+
+  post '/realtime/instagram' => 'realtime#instagram'
+  get '/realtime/instagram' => 'realtime#instagramVerify'
 
   post '/realtime/facebook' => 'realtime#facebook'
   get '/realtime/facebook' => 'realtime#facebookVerify'

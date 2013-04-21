@@ -103,6 +103,42 @@
     <% end %>
     </tbody>
     </table>
-    <%= link_to('Connect to Twitter feed', {:controller => 'profiles', :action => 'new'}) %>
+   
+<% end %>
+<% if @ins_profiles.count < 1 %>
+   <%= link_to('Connect to Instagram', {:controller => 'clients/instagram_clients', :action => 'new'}) %>
+<% else %>
+    <h2>Connected Twitter feeds</h2>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:status) %></th>
+          <th><%= model_class.human_attribute_name(:service_id) %></th>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        </tr>
+      </thead>
+      <tbody>
+
+    <% @ins_profiles.each do |ins_profile| %>
+     <tr>
+        <td><%= ins_profile.status %></td>
+        <td><%= ins_profile.service_id %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_profile_path(ins_profile), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      profile_path(ins_profile),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+
+        </td>
+     
+    </tr>
+    <% end %>
+    </tbody>
+    </table>
+    <%= link_to('Connect to Instagram feed', {:controller => 'profiles', :action => 'new'}) %>
    
 <% end %>

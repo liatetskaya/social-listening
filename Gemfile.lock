@@ -221,6 +221,7 @@ DEPENDENCIES
   sqlite3
   therubyracer
   tweetstream
+  twitter
   twitter-bootstrap-rails
   twitter_oauth
   uglifier (>= 1.0.3)

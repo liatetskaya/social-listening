@@ -13,7 +13,7 @@ class RealtimeController < ApplicationController
           @checkin.rm_merchant_id = resp['venue']['id']
           @checkin.user_first_name = resp['user']['firstName']
           @checkin.user_last_name = resp['user']['lastName']
-          @checkin.user_photo = resp['user']['photo']
+          @checkin.user_photo = resp['user']['photo']['prefix'] + "original" + resp['user']['photo']['suffix']
   #        @checkin.user_screen_name = resp['user']['screen_name']
           @checkin.user_info= resp['venue']['stats']['checkinsCount']
           @checkin.post_text= resp['user']['text']
@@ -24,9 +24,19 @@ class RealtimeController < ApplicationController
           @checkin.message= resp.to_s
           @checkin.save
 
-    #user = FoursquareUser.find_by_foursquare_id(checkin['user']['id'])
-    #user.client.create_checkin_reply(checkin['id'], text: "hello world!")
     return head :ok
+  end
+
+  def instagram
+    #resp = JSON.parse(request.body.read)
+    #Rails.logger.info resp.inspect
+    return head :ok
+  end
+
+  def instagramVerify
+    # TODO: verify the token first (in params['hub.verify_token'])
+
+    render text: params['hub.challenge']
   end
 
   def facebook
