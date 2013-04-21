@@ -5,12 +5,13 @@
 
 
 <% @checkins.each do |checkin| %>
-    <div class="checkIn">
+    <div class="checkIn <%= checkin.rm_service_id %>">
         <div class="profilePic">
           <img src="" />
         </div><div class="profileContent">
           <ul>
-            <li><em>Name: </em><%= checkin.user_first_name %> <%= checkin.user_last_name %></li>
+            <li class="name"><%= checkin.user_first_name %> <%= checkin.user_last_name %></li>
+            <li class="message"><%= checkin.post_text %></li>
           </ul>
         </div>
       </div>
