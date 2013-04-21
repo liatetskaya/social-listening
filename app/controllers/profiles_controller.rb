@@ -6,7 +6,9 @@ class ProfilesController < ApplicationController
     @fb_profiles = Profile.find(:all, :conditions => ["service = ? ", "FACEBOOK"])
     @fs_profiles = Profile.find(:all, :conditions => ["service = ? ", "FOURSQUARE"])
     @tw_profiles = Profile.find(:all, :conditions => ["service = ? ", "TWITTER"])
-    
+    @tw_master = Profile.find(:all, :conditions => ["service_id = ? ", "MASTER"]) 
+    @ins_profiles = Profile.find(:all, :conditions => ["service = ? ", "INSTAGRAM"])
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @profiles }
@@ -77,6 +79,9 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1.json
   def update
     @profile = Profile.find(params[:id])
+    if @profile['service']='INSTAGRAM'
+      # to update subscription on instagram.com we need to delete old subscription and create new one
+    end  
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
