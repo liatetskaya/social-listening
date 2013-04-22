@@ -17,4 +17,6 @@ class Checkin < ActiveRecord::Base
     :notes, 
     :message, 
     :client_id 
+
+    belongs_to :profile
 end

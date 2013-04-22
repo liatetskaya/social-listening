@@ -26,7 +26,7 @@ class Tweet
                     '#'
                   end
           
-          options = {:count => 10, :result_type => 'recent'}
+          options = {:count => 10, :result_type => 'recent', :since_id => profile.last_message_id}
           if profile.location.present?
             options[:geocode] = profile.location
           end
@@ -42,8 +42,9 @@ class Tweet
                 @checkin.rm_user_id = user[:id]
                 @checkin.user_first_name = user[:name]
                 @checkin.user_screen_name = user[:screen_name]
-                #@checkin.user_last_name = user[:lastName]
+                @checkin.profile_id = profile.id
                 @checkin.user_photo = user[:profile_image_url]
+                @checkin.rm_message_url = "https://twitter.com/"+ user[:screen_name]+"/status/"+ res[:id]
               end
               @checkin.post_text = res[:text]
               @checkin.message = res.to_json
@@ -55,10 +56,10 @@ class Tweet
               end
             end
           end
-          profile.last_message_timestamp = @checkin.rm_message_id
+          profile.last_message_id = @checkin.rm_message_id
           profile.save
         rescue
-          Rails.logger.error "Error #{$!}"
+          Rails.logger.error "Error: #{$!}"
         end
       end
     end

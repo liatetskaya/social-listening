@@ -15,11 +15,20 @@ class Clients::FoursquareClientsController < ApplicationController
 			# TODO: manage error
 		end
 		token = client.auth_code.get_token params[:code], redirect_uri: callback_foursquare_clients_url
-		profile = Profile.new
-        	profile.user = current_user
-        	profile.service = "FOURSQUARE"
-        	profile.token = token.token
-        	profile.save
+
+		# to get the user venues
+		# FoursquareClient.new(token).user_venues
+
+		#uri = URI('https://api.foursquare.com/v2/venues/managed?oauth_token=' + ACCESS_TOKEN)
+        #@res = Net::HTTPS.get_response(uri).body
+	    #@res.each do |result|
+
+			profile = Profile.new
+	        	profile.user = current_user
+	        	profile.service = "FOURSQUARE"
+	        	profile.token = token.token
+	        	profile.save
+	    end
 		
 		session[:fs_auth] = nil
 		redirect_to profiles_path

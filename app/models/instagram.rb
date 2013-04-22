@@ -30,7 +30,8 @@ class Instagram
           if profile.location.present?
             options[:geocode] = profile.location
           end
-          results = tw_client.search(query, options)[:results]
+          results = Instagram.media_search("37.7808851","-122.3948632")
+          
           if results.present?
             results.each do |res|
 	      #Rails.logger.info res[:id].inspect

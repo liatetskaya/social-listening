@@ -14,7 +14,6 @@ class RealtimeController < ApplicationController
           @checkin.user_first_name = resp['user']['firstName']
           @checkin.user_last_name = resp['user']['lastName']
           @checkin.user_photo = resp['user']['photo']['prefix'] + "original" + resp['user']['photo']['suffix']
-  #        @checkin.user_screen_name = resp['user']['screen_name']
           @checkin.user_info= resp['venue']['stats']['checkinsCount']
           @checkin.post_text= resp['user']['text']
  #         @checkin.post_url= resp['user']['name']
