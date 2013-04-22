@@ -11,8 +11,20 @@
           <img src="<%= checkin.user_photo %>" />
         </div><div class="profileContent">
           <ul>
-            <li class="name"><img src="/assets/twitter.png" /><%= checkin.user_first_name %> <%= checkin.user_last_name %> <span class="addNote">Add Note</span></li>
-            <li class="message"><%= checkin.post_text %> <div class="time"><%= checkin.created_at %></div></li>
+            <li class="name"><img src="/assets/twitter.png" /><%= checkin.user_first_name %> <%= checkin.user_last_name %> <span class="addNote <%= checkin.id %>">Add Note</span></li>
+            <li class="message">
+              <a href="<%= checkin.rm_message_url %>" target="_blank">
+                <%= checkin.post_text %>
+                <div class="time">
+                  <%= checkin.created_at %>
+                </div>
+              </a>
+            </li>
+            <form class="addNoteForm" id="<%= checkin.id %>">
+              <input type="textarea" name="comment" id="comment" />
+              <input type="hidden" id="checkinId" value="<%= checkin.id %>" />
+              <input type="submit" value="Add Note" />
+            </form>
           </ul>
         </div>
       </div>
@@ -50,3 +62,12 @@
   </tbody>
 </table>
 
+<script>
+$('.addNote').click(function(){
+  checkinId = $(this).attr('class').split(" ")[1];
+  $("#"+checkinId).toggle();
+  $("#"+checkinId+" #comment").focus()
+
+});
+
+</script>

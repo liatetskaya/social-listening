@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418071853) do
+ActiveRecord::Schema.define(:version => 20130422041833) do
 
   create_table "checkins", :force => true do |t|
     t.string   "rm_service_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20130418071853) do
     t.string   "client_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "profile_id"
   end
 
   create_table "feeds", :force => true do |t|
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20130418071853) do
     t.string   "location"
     t.string   "keywords"
     t.string   "last_message_timestamp"
+    t.string   "last_message_id"
   end
 
   create_table "users", :force => true do |t|
