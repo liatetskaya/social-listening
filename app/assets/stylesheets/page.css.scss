@@ -88,9 +88,10 @@ h2{
 .productDemo{
 	margin-top: 20px;
 	width: 100%;
-	background-color: black;
 	height: 300px;
 }
+
+
 
 .navbar-fixed-top{
 	position: absolute;
@@ -126,6 +127,10 @@ h2{
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 600;
 	font-size: 15px;
+}
+
+.navbar .nav > li > a:hover{
+	color: #999;
 }
 
 
@@ -224,6 +229,10 @@ h2{
 .profileContent .message .time{
 	font-weight: bold;
 	color: #888;
+}
+
+.profileContent .message a:hover{
+	text-decoration: none;
 }
 .mainContent{
 	background-image: url("/assets/content.png");
