@@ -18,11 +18,14 @@
                 <div class="time">
                   <%= checkin.created_at %>
                 </div>
-              </a>
-            </li>
-            <form class="addNoteForm" id="<%= checkin.id %>">
-              <input type="textarea" name="comment" id="comment" />
+               </a>
+            
               <input type="hidden" id="checkinId" value="<%= checkin.id %>" />
+              <td><%= checkin.notes%></td>
+             
+              `<%= link_to t('.edit', :default => "add Note"),
+                      edit_checkin_path(checkin), :class => 'submit' %>
+
               <input type="submit" value="Add Note" />
             </form>
           </ul>

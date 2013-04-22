@@ -6,14 +6,13 @@
 <% if @fb_profiles.count < 1 %>
     <%= link_to('Connect to Facebook', {:controller => 'clients/facebook_clients', :action => 'new'}) %>
 <% else %>
-    <h2>Connected Facebook pages</h2>
+    <p>Connected Facebook pages</p>
 
     <table class="table table-striped">
       <thead>
+
         <tr>
           <th><%= model_class.human_attribute_name(:status) %></th>
-          <th><%= model_class.human_attribute_name(:service_id) %></th>
-          <th><%=t '.actions', :default => t("helpers.actions") %></th>
         </tr>
       </thead>
       <tbody>
@@ -39,14 +38,13 @@
 <% if @fs_profiles.count < 1 %>
    <%= link_to('Connect to Foursquare', {:controller => 'clients/foursquare_clients', :action => 'new'}) %>
 <% else %>
-    <h2>Connected Foursquare Venues</h2>
+    <p>Connected Foursquare Venues</p>
 
     <table class="table table-striped">
       <thead>
         <tr>
           <th><%= model_class.human_attribute_name(:status) %></th>
-          <th><%= model_class.human_attribute_name(:service_id) %></th>
-          <th><%=t '.actions', :default => t("helpers.actions") %></th>
+
         </tr>
       </thead>
       <tbody>
@@ -54,7 +52,6 @@
     <% @fs_profiles.each do |fs_profile| %>
      <tr>
         <td><%= fs_profile.status %></td>
-        <td><%= fs_profile.service_id %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_profile_path(fs_profile), :class => 'btn btn-mini' %>
@@ -72,14 +69,12 @@
 <% if @tw_profiles.count < 1 %>
    <%= link_to('Connect to Twitter', {:controller => 'profiles', :action => 'new'}) %>
 <% else %>
-    <h2>Connected Twitter feeds</h2>
+    <p>Connected Twitter feeds</p>
 
     <table class="table table-striped">
       <thead>
         <tr>
           <th><%= model_class.human_attribute_name(:status) %></th>
-          <th><%= model_class.human_attribute_name(:service_id) %></th>
-          <th><%=t '.actions', :default => t("helpers.actions") %></th>
         </tr>
       </thead>
       <tbody>
@@ -87,7 +82,7 @@
     <% @tw_profiles.each do |tw_profile| %>
      <tr>
         <td><%= tw_profile.status %></td>
-        <td><%= tw_profile.service_id %></td>
+ 
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_profile_path(tw_profile), :class => 'btn btn-mini' %>
@@ -108,7 +103,7 @@
 <% if @ins_profiles.count < 1 %>
    <%= link_to('Connect to Instagram', {:controller => 'clients/instagram_clients', :action => 'new'}) %>
 <% else %>
-    <h2>Connected Twitter feeds</h2>
+    <p>Connected Instagram feed</p>
 
     <table class="table table-striped">
       <thead>

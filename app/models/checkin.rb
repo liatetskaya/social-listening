@@ -19,4 +19,5 @@ class Checkin < ActiveRecord::Base
     :client_id 
 
     belongs_to :profile
+
 end

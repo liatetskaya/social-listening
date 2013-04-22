@@ -44,7 +44,7 @@ class Tweet
                 @checkin.user_screen_name = user[:screen_name]
                 @checkin.profile_id = profile.id
                 @checkin.user_photo = user[:profile_image_url]
-                @checkin.rm_message_url = "https://twitter.com/"+ user[:screen_name]+"/status/"+ res[:id]
+                @checkin.rm_message_url = "https://twitter.com/"+ user[:screen_name]+"/status/"+ res[:id].to_s
               end
               @checkin.post_text = res[:text]
               @checkin.message = res.to_json
@@ -52,11 +52,14 @@ class Tweet
               # That section should be last, saves the recored only if there's a location
               if res[:geo] != nil && res[:geo][:coordinates] != nil
                 @checkin.location = res[:geo][:coordinates].to_json
-                @checkin.save
+
+                if res[:id] > profile.last_message_id.to_i 
+                   @checkin.save
+                end
               end
             end
           end
-          profile.last_message_id = @checkin.rm_message_id
+          profile.last_message_id = @checkin.rm_message_id.to_s
           profile.save
         rescue
           Rails.logger.error "Error: #{$!}"

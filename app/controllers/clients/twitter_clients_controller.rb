@@ -18,6 +18,7 @@ class Clients::TwitterClientsController < ApplicationController
 			profile = Profile.new
 			profile.user = current_user
 			profile.service = "TWITTER"
+                        profile.last_message_id = "0"
 			profile.token = { :token => access_token.token, :secret => access_token.secret }.to_json
 			profile.save
 		end
