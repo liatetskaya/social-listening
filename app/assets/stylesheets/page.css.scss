@@ -53,6 +53,16 @@ h2{
 	color: white;
 }
 
+.page-header a img{
+	float: right;
+	padding-right: 25px;
+	width: 30px;
+	opacity: .9;
+}
+
+.page-header a img:hover{
+	opacity: 1;
+}
 
 
 .new_user{
