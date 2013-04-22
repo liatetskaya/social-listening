@@ -8,10 +8,8 @@ body{
 
 .navbar-fixed-top{
 	top: 20px;
-	padding-top: 0px;
-	
+	padding-top: 0px;	
 }
-
 
 h1{
 	font-family: helvetica, san-serif;
@@ -19,7 +17,7 @@ h1{
 	display: inline;
 	vertical-align: middle;
 	padding-left: 20px;
-	font-size: 37px;
+	font-size: 32px;
 	text-shadow: 0 1px 0 black;
 	font-weight: normal;
 
@@ -39,9 +37,32 @@ h2{
 }
 
 .page-header{
-	margin: 20px 0 10px;
+	margin: 0 0 25px 0;
+	padding-top: 20px;
+	padding-bottom: 15px;
+	border-radius: 5px 5px 0 0;
+	background: linear-gradient(to bottom,#009ae6 0,#0081c3 100%);
+	color: #fff;
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.5);
+	border-color: #111;
+
+
 }
 
+.page-header h1{
+	color: white;
+}
+
+.page-header a img{
+	float: right;
+	padding-right: 25px;
+	width: 30px;
+	opacity: .9;
+}
+
+.page-header a img:hover{
+	opacity: 1;
+}
 
 
 .new_user{
@@ -76,19 +97,22 @@ h2{
 }
 
 .navbar-inner{
+	
 	background: none;
 	border: none;
+	text-align: right;
+	font-weight: 600;
+	font-size: 15px;
+
+	-webkit-box-shadow: 0 0px 0px rgba(0,0,0,.1) !important;
 	box-shadow: 0 0px 0px rgba(0,0,0,.1) !important;
 	-moz-box-shadow: 0 none;
-	text-align: right;
-	-webkit-box-shadow: 0 0px 0px rgba(0,0,0,.1) !important;
-	font-weight: bold;
 
 }
 
 .nav{
-	background-color: #999;
 	border-radius: 5px;
+
 }
 
 .navbar .nav{
@@ -97,8 +121,11 @@ h2{
 }
 
 .navbar .nav > li > a{
-	color: #333;
+	color: #F4F4F4;
 	text-shadow: none;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	font-size: 15px;
 }
 
 
@@ -109,22 +136,29 @@ h2{
 }
 
 .checkIn{
-  border-radius: 8px;
-  border: 1px solid black;
+  border-radius: 5px;
+  
   height: 102px;
-  margin-left: 40px;
-  margin-bottom: 15px;
-  background-color: #F2F2F2;
+  margin-left: 30px;
+  margin-bottom: 30px;
   width: 90%;
+  cursor: pointer;
 }
+
+
 
 .checkIn .profilePic{
   background-color: #999;
-  width: 100px;
-  height: 100px;
+  width: 102px;
+  height: 102px;
   display: inline-block;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
+  
+  
+}
+
+.profilePic img{
+	width: 103px;
+	border-radius: 10px;
 }
 
 .checkIn .profileContent{
@@ -132,10 +166,11 @@ h2{
   height: 93px;
   display: inline-block;
   vertical-align: top;
-  padding: 10px 0 0 10px;
+  padding: 0px 0 0 10px;
 
   
 }
+
 
 .profileContent ul li{
   padding-bottom: 10px;
@@ -145,6 +180,7 @@ h2{
 
 .profileContent ul{
   margin: 0px;
+  padding-top: 4px;
 }
 
 .profileContent ul li.repeat{
@@ -158,13 +194,37 @@ h2{
 	font-size: 20px;
 }
 
-.profileContent .message{
-	width: 500px;
-	color: #333;
+.profileContent .name .addNote{
+	font-weight: normal;
+	font-size: 12px;
+	float: right;
+	padding-right: 10px;
+
 }
 
+.profileContent .name img{
+	width: 20px;
+	padding-right: 10px;
+	vertical-align: middle;
+	padding-bottom: 3px;
+}
+
+.profileContent .message{
+	width: 700px;
+	color: #333;
+	background-color: #DADADA;
+	padding-top: 5px;
+	padding-left: 10px;
+	border-radius: 10px;
+	box-shadow: 1px 1px 1px #888888;
+}
+
+.profileContent .message .time{
+	font-weight: bold;
+	color: #888;
+}
 .mainContent{
 	background-image: url("/assets/content.png");
 	border-radius: 5px;
-	padding-top: 20px;
+	
 }

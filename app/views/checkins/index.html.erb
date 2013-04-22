@@ -1,18 +1,18 @@
-<meta http-equiv="refresh" content="30">
+
 <%- model_class = Checkin -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h1>Social Check-ins</h1> <a href="/checkins"><img src="/assets/refresh.png" /></a>
 </div>
 
 
 <% @checkins.each do |checkin| %>
     <div class="checkIn <%= checkin.rm_service_id %>">
         <div class="profilePic">
-          <img src="" />
+          <img src="<%= checkin.user_photo %>" />
         </div><div class="profileContent">
           <ul>
-            <li class="name"><%= checkin.user_first_name %> <%= checkin.user_last_name %></li>
-            <li class="message"><%= checkin.post_text %></li>
+            <li class="name"><img src="/assets/twitter.png" /><%= checkin.user_first_name %> <%= checkin.user_last_name %> <span class="addNote">Add Note</span></li>
+            <li class="message"><%= checkin.post_text %> <div class="time"><%= checkin.created_at %></div></li>
           </ul>
         </div>
       </div>

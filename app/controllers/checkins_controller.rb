@@ -3,7 +3,7 @@ class CheckinsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @checkins = Checkin.order("created_at desc").where("created_at >= ?", Time.now - 3600)
+    @checkins = Checkin.order("created_at desc")
 
     respond_to do |format|
       format.html # index.html.erb
