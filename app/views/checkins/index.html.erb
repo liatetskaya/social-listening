@@ -11,7 +11,7 @@
           <img src="<%= checkin.user_photo %>" />
         </div><div class="profileContent">
           <ul>
-            <li class="name"><img src="/assets/twitter.png" /><%= checkin.user_first_name %> <%= checkin.user_last_name %> <span class="addNote <%= checkin.id %>">Add Note</span></li>
+            <li class="name"><img src="/assets/<%= checkin.rm_service_id %>.png" /><%= checkin.user_first_name %> <%= checkin.user_last_name %> <span class="addNote <%= checkin.id %>">Add Note</span></li>
             <li class="message">
               <a href="<%= checkin.rm_message_url %>" target="_blank">
                 <%= checkin.post_text %>
