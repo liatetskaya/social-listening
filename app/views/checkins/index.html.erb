@@ -22,7 +22,7 @@
                
             
               <input type="hidden" id="checkinId" value="<%= checkin.id %>" />
-              <td><%= checkin.notes%></td> 
+              <!--<td><%= checkin.notes%></td> -->
              
               
             <form class="addNoteForm" id="edit_checkin_<%= checkin.id %>" action="/checkins/<%= checkin.id %>">
@@ -70,8 +70,9 @@
 <script>
 $('.addNote').click(function(){
   checkinId = $(this).attr('class').split(" ")[1];
+
   $("#edit_checkin_"+checkinId).toggle();
-  $("#edit_checkin_"+checkinId+" #comment").focus()
+  $("#edit_checkin_"+checkinId+" #checkin_notes").focus()
 
   /*
     $(form).on('submit', function(e) {
@@ -84,7 +85,7 @@ $('.addNote').click(function(){
             // Show success, or embed the data into view
           }
         )
-    })
+    })*/
 });
 
 </script>
