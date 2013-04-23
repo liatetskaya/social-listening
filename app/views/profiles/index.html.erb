@@ -1,13 +1,33 @@
 <%- model_class = Profile -%>
+
+<style type="text/css">
+.socialLogos img{
+  width: 200px;
+  padding: 20px;
+}
+
+table{
+  width: 50% !important;
+  margin-left: 36px;
+
+}
+
+.socialNetworkTitle{
+  display: none;
+}
+</style>
+
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h1>Account Settings</h1>
 </div>
 
 <% if @fb_profiles.count < 1 %>
     <%= link_to('Connect to Facebook', {:controller => 'clients/facebook_clients', :action => 'new'}) %>
 <% else %>
-    <p>Connected Facebook pages</p>
-
+    <p class="socialNetworkTitle">Connected Facebook pages</p>
+    <div class="socialLogos">
+      <img src="/assets/facebookLogo.png" />
+    </div>
     <table class="table table-striped">
       <thead>
 
@@ -38,8 +58,10 @@
 <% if @fs_profiles.count < 1 %>
    <%= link_to('Connect to Foursquare', {:controller => 'clients/foursquare_clients', :action => 'new'}) %>
 <% else %>
-    <p>Connected Foursquare Venues</p>
-
+    <p class="socialNetworkTitle">Connected Foursquare Venues</p>
+    <div class="socialLogos">
+      <img src="/assets/foursquareLogo.png" />
+    </div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -69,8 +91,10 @@
 <% if @tw_profiles.count < 1 %>
    <%= link_to('Connect to Twitter', {:controller => 'profiles', :action => 'new'}) %>
 <% else %>
-    <p>Connected Twitter feeds</p>
-
+    <p class="socialNetworkTitle">Connected Twitter feeds</p>
+    <div class="socialLogos">
+      <img src="/assets/twitterLogo.png" />
+    </div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -103,8 +127,10 @@
 <% if @ins_profiles.count < 1 %>
    <%= link_to('Connect to Instagram', {:controller => 'clients/instagram_clients', :action => 'new'}) %>
 <% else %>
-    <p>Connected Instagram feed</p>
-
+    <p class="socialNetworkTitle">Connected Instagram feed</p>
+    <div class="socialLogos">
+      <img src="/assets/instagramLogo.png" />
+    </div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -134,6 +160,6 @@
     <% end %>
     </tbody>
     </table>
-    <%= link_to('Connect to Instagram feed', {:controller => 'profiles', :action => 'new'}) %>
+    <!-- <%= link_to('Connect to Instagram feed', {:controller => 'profiles', :action => 'new'}) %>-->
    
 <% end %>
