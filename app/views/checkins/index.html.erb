@@ -15,17 +15,19 @@
             <li class="message">
               <a href="<%= checkin.rm_message_url %>" target="_blank">
                 <%= checkin.post_text %>
+              </a>
                 <div class="time">
-                  <%= checkin.created_at %>
+                  <%= checkin.created_at.strftime("- %m/%d/%Y")%>
                 </div>
-               </a>
+               
             
               <input type="hidden" id="checkinId" value="<%= checkin.id %>" />
-              <td><%= checkin.notes%></td>
+              <td><%= checkin.notes%></td> 
              
-              `<%= link_to t('.edit', :default => "add Note"),
-                      edit_checkin_path(checkin), :class => 'submit' %>
-
+              
+            <form class="addNoteForm" id="edit_checkin_<%= checkin.id %>" action="/checkins/<%= checkin.id %>">
+              <input type="textarea" name="checkin_notes" id="checkin_notes" />
+              <input type="hidden" id="checkin_rm_user_id" value="<%= checkin.rm_user_id %>" />
               <input type="submit" value="Add Note" />
             </form>
           </ul>
@@ -68,9 +70,21 @@
 <script>
 $('.addNote').click(function(){
   checkinId = $(this).attr('class').split(" ")[1];
-  $("#"+checkinId).toggle();
-  $("#"+checkinId+" #comment").focus()
+  $("#edit_checkin_"+checkinId).toggle();
+  $("#edit_checkin_"+checkinId+" #comment").focus()
 
+  /*
+    $(form).on('submit', function(e) {
+      e.preventDefault();
+      var data = $(form).serialize()
+      $post(
+          url: "/checkins/#{id}",
+          params: data,
+          success: function(e) {
+            // Show success, or embed the data into view
+          }
+        )
+    })
 });
 
 </script>

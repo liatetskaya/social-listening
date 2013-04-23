@@ -29,7 +29,9 @@ class CheckinsController < ApplicationController
     respond_to do |format|
       if @checkin.update_attributes(params[:checkin])
         format.html { redirect_to @checkin, notice: 'Checkin was successfully updated.' }
-        format.json { head :no_content }
+        format.json do
+          head :no_content
+        end
       else
         format.html { render action: "edit" }
         format.json { render json: @checkin.errors, status: :unprocessable_entity }
